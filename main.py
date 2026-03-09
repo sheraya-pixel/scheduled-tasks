@@ -7,11 +7,11 @@ import os
 MY_LAT = 51.507351 # Your latitude
 MY_LONG = -0.127758 # Your longitude
 
-ISS_URL = os.environ.get("ISS_URL")
-SUN_URL = os.environ.get("SUN_URL")
+ISS_URL = os.getenv("ISS_URL")
+SUN_URL = os.getenv("SUN_URL")
 
-MY_EMAIL = os.environ.get("MY_EMAIL")
-MY_PASSWORD = os.environ.get("MY_PASSWORD")
+MY_EMAIL = os.getenv("MY_EMAIL")
+MY_PASSWORD = os.getenv("MY_PASSWORD")
 
 response = requests.get(url=ISS_URL)
 response.raise_for_status()
