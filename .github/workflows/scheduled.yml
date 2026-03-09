@@ -42,8 +42,8 @@ jobs:
         env:
           # Your secrets are available as environment variables
           # Add more secrets in Settings > Secrets > Actions
-          my_email: ${{ secrets.MY_EMAIL }}
-          password: ${{ secrets.MY_PASSWORD }}
-          iss_url: ${{ secrets.ISS_URL }}
-          sun_url: ${{ secrets.SUN_URL }}
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          ISS_URL: ${{ secrets.ISS_URL }}
+          SUN_URL: ${{ secrets.SUN_URL }}
         run: python main.py
