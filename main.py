@@ -7,13 +7,13 @@ import os
 MY_LAT = 51.507351 # Your latitude
 MY_LONG = -0.127758 # Your longitude
 
-iss_url = os.environ.get("ISS_URL")
-sun_url = os.environ.get("SUN_URL")
+ISS_URL = os.environ.get("ISS_URL")
+SUN_URL = os.environ.get("SUN_URL")
 
-my_email = os.environ.get("MY_EMAIL")
-password = os.environ.get("MY_PASSWORD")
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
-response = requests.get(url=iss_url)
+response = requests.get(url=ISS_URL)
 response.raise_for_status()
 data = response.json()
 
@@ -40,7 +40,7 @@ parameters = {
     "formatted": 0,
 }
 
-response = requests.get(url=sun_url, params=parameters)
+response = requests.get(url=SUN_URL, params=parameters)
 response.raise_for_status()
 data = response.json()
 sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
@@ -52,7 +52,7 @@ time_now = datetime.datetime.now()
 if within_range() and is_dark():
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user=my_email, password=password)
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         connection.sendmail(from_addr=my_email, to_addrs="bananabottle82@gmail.com",
                             msg="Subject:Look Up!\n\nSpot the International Space Station above you right now.")
 # and it is currently dark
